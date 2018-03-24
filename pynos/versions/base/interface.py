@@ -2765,14 +2765,30 @@ class Interface(object):
                                                       urn).text
                     interface_mac = item.find(
                         '%scurrent-hardware-address' % urn).text
+                    interface_mtu = item.find('%smtu' % urn).text
+                    interface_ifhcinoctets = item.find('%sifHCInOctets' % urn).text
+                    interface_ifhcinerrors = item.find('%sifHCInErrors' % urn).text
+                    interface_ifhcoutoctets = item.find('%sifHCOutOctets' % urn).text
+                    interface_ifhcouterrors = item.find('%sifHCOutErrors' % urn).text
+                    if item.find('%sif-description' % urn) is not None:
+                        interface_description = item.find('%sif-description' % urn).text
+                    else:
+                        interface_description = ''
                     item_results = {'interface-type': interface_type,
                                     'interface-name': interface_name,
-                                    'interface-role': interface_role,
+                                    'port-role': interface_role,
                                     'if-name': if_name,
                                     'interface-state': interface_state,
                                     'interface-proto-state':
                                         interface_proto_state,
-                                    'interface-mac': interface_mac}
+                                    'interface-mac': interface_mac,
+                                    'interface-mtu': interface_mtu,
+                                    'ifHCInOctets': interface_ifhcinoctets,
+                                    'ifHCInErrors': interface_ifhcinerrors,
+                                    'ifHCOutOctets': interface_ifhcoutoctets,
+                                    'ifHCOutErrors': interface_ifhcouterrors,
+                                    'if-description': interface_description
+                                    }
                 result.append(item_results)
 
         return result
