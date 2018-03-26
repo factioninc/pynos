@@ -40,6 +40,9 @@ class System(object):
     @property
     def uptime(self):
         """dict: device uptime
+
+        Args:
+            rbridge-id: Callback function that will be called for each action.
         """
         namespace = 'urn:brocade.com:mgmt:brocade-system'
         get_system_uptime = ET.Element('get-system-uptime', xmlns=namespace)
@@ -50,6 +53,31 @@ class System(object):
                              minutes=results.find('.//{%s}minutes' %
                                                   namespace).text,
                              seconds=results.find('.//{%s}seconds' %
+                                                  namespace).text)
+        return system_uptime
+
+    def uptime_rbridge_id(self, **kwargs):
+        """list/dict: device uptime
+
+        Args:
+            rbridge-id: rbridge id of the switch to collect uptime from
+
+        """
+
+        namespace = 'urn:brocade.com:mgmt:brocade-system'
+        get_system_uptime = ET.Element('get-system-uptime', xmlns=namespace)
+        rbridge = ET.SubElement(get_system_uptime,
+                                         "rbridge-id")
+        rbridge.text = kwargs.pop('rbridge_id')
+        results = self._callback(get_system_uptime, handler='get')
+
+
+        system_uptime = dict(days=results.find('.//{%s}days' % namespace).text,
+                                hours=results.find('.//{%s}hours' %
+                                                namespace).text,
+                                minutes=results.find('.//{%s}minutes' %
+                                                  namespace).text,
+                                seconds=results.find('.//{%s}seconds' %
                                                   namespace).text)
         return system_uptime
 
