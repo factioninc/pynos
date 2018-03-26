@@ -31,6 +31,7 @@ import pynos.versions.ver_5.ver_5_0_1.fabric_service
 import pynos.versions.ver_5.ver_5_0_1.vcs
 import pynos.versions.ver_5.ver_5_0_1.firmware
 import pynos.versions.ver_5.ver_5_0_1.ras
+import pynos.versions.ver_5.ver_5_0_1.system_monitor
 import pynos.versions.ver_6.ver_6_0_1.bgp
 import pynos.versions.ver_6.ver_6_0_1.snmp
 import pynos.versions.ver_6.ver_6_0_1.interface
@@ -38,6 +39,7 @@ import pynos.versions.ver_6.ver_6_0_1.lldp
 import pynos.versions.ver_6.ver_6_0_1.system
 import pynos.versions.ver_6.ver_6_0_1.services
 import pynos.versions.ver_6.ver_6_0_1.fabric_service
+import pynos.versions.ver_6.ver_6_0_1.system_monitor
 import pynos.versions.ver_6.ver_6_0_1.vcs
 import pynos.versions.ver_6.ver_6_0_1.firmware
 import pynos.versions.ver_6.ver_6_0_1.ras
@@ -62,6 +64,8 @@ VERSIONS = {
         'vcs': pynos.versions.ver_5.ver_5_0_1.vcs.VCS,
         'firmware': pynos.versions.ver_5.ver_5_0_1.firmware.Firmware,
         'ras': pynos.versions.ver_5.ver_5_0_1.ras.RAS,
+        'system_monitor': pynos.versions.ver_5.ver_5_0_1.system_monitor
+            .SystemMonitor,
     },
     '6.0.1': {
         'bgp': pynos.versions.ver_6.ver_6_0_1.bgp.BGP,
@@ -75,6 +79,8 @@ VERSIONS = {
         'vcs': pynos.versions.ver_6.ver_6_0_1.vcs.VCS,
         'firmware': pynos.versions.ver_6.ver_6_0_1.firmware.Firmware,
         'ras': pynos.versions.ver_6.ver_6_0_1.ras.RAS,
+        'system_monitor': pynos.versions.ver_6.ver_6_0_1.system_monitor
+            .SystemMonitor,
     },
     '6.0.2': {
         'bgp': pynos.versions.ver_6.ver_6_0_1.bgp.BGP,
@@ -88,6 +94,8 @@ VERSIONS = {
         'vcs': pynos.versions.ver_6.ver_6_0_1.vcs.VCS,
         'firmware': pynos.versions.ver_6.ver_6_0_1.firmware.Firmware,
         'ras': pynos.versions.ver_6.ver_6_0_1.ras.RAS,
+        'system_monitor': pynos.versions.ver_6.ver_6_0_1.system_monitor
+            .SystemMonitor,
     },
     '7.0.0': {
         'bgp': pynos.versions.ver_7.ver_7_0_0.bgp.BGP,
@@ -101,6 +109,8 @@ VERSIONS = {
         'vcs': pynos.versions.ver_6.ver_6_0_1.vcs.VCS,
         'firmware': pynos.versions.ver_7.ver_7_0_0.firmware.Firmware,
         'ras': pynos.versions.ver_6.ver_6_0_1.ras.RAS,
+        'system_monitor': pynos.versions.ver_6.ver_6_0_1.system_monitor
+            .SystemMonitor,
     },
     '7.0.1': {
         'bgp': pynos.versions.ver_7.ver_7_0_0.bgp.BGP,
@@ -116,7 +126,9 @@ VERSIONS = {
         'ras': pynos.versions.ver_6.ver_6_0_1.ras.RAS,
         'nsx': pynos.versions.ver_7.ver_7_1_0.nsx.Nsx,
         'hw_vtep': pynos.versions.ver_7.ver_7_1_0.hw_vtep.hwvtep,
-        'vcenter': pynos.versions.ver_7.ver_7_1_0.vcenter.Vcenter
+        'vcenter': pynos.versions.ver_7.ver_7_1_0.vcenter.Vcenter,
+        'system_monitor': pynos.versions.ver_6.ver_6_0_1.system_monitor
+                          .SystemMonitor,
     },
     '7.1.0': {
         'bgp': pynos.versions.ver_7.ver_7_0_0.bgp.BGP,
@@ -132,12 +144,14 @@ VERSIONS = {
         'ras': pynos.versions.ver_6.ver_6_0_1.ras.RAS,
         'nsx': pynos.versions.ver_7.ver_7_1_0.nsx.Nsx,
         'hw_vtep': pynos.versions.ver_7.ver_7_1_0.hw_vtep.hwvtep,
-        'vcenter': pynos.versions.ver_7.ver_7_1_0.vcenter.Vcenter
+        'vcenter': pynos.versions.ver_7.ver_7_1_0.vcenter.Vcenter,
+        'system_monitor': pynos.versions.ver_6.ver_6_0_1.system_monitor
+            .SystemMonitor,
     }
 }
 
 NOS_ATTRS = ['bgp', 'snmp', 'interface', 'lldp', 'system', 'services',
-             'fabric_service', 'vcs', 'firmware', 'ras', 'vcenter', 'hw_vtep', 'nsx']
+             'fabric_service', 'vcs', 'firmware', 'ras', 'vcenter', 'hw_vtep', 'nsx', 'system_monitor']
 
 
 class DeviceCommError(Exception):
