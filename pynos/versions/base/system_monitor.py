@@ -40,25 +40,23 @@ class SystemMonitor(object):
         """
 
         rbridge_id = 'all'
+        namespace = 'urn:brocade.com:mgmt:brocade-system-monitor-ext'
 
-        xmlns = 'urn:brocade.com:mgmt:brocade-system-monitor-ext'
-        urn = "{urn:brocade.com:mgmt:brocade-system-monitor-ext}"
-
-        get_system_monitor = ET.Element('show-system-monitor', xmlns=xmlns)
+        get_system_monitor = ET.Element('show-system-monitor', xmlns=namespace)
         rbridge = ET.SubElement(get_system_monitor,
                                          "rbridge-id")
         rbridge.text = rbridge_id
         monitor_results = self._callback(get_system_monitor, handler='get')
-
         results = []
-        for item in monitor_results.findall('%sswitch-status' % urn):
+        for item in monitor_results.findall('.//{%s}switch-status' % namespace):
             components = []
-            switch_name = item.find('%sswitch-name' % urn).text
-            switch_state = item.find('%sswitch-state' % urn).text
-            switch_state_reason = item.find('%sswitch-state-reason' % urn).text
-            for comp in item.findall('%scomponent-status' % urn):
-                component_name = comp.find('%scomponent-name' % urn).text
-                component_state = comp.find('%scomponent-state' % urn).text
+            switch_name = item.find('.//{%s}switch-name' % namespace).text
+            switch_state = item.find('.//{%s}switch-state' % namespace).text
+            switch_rbridge_id = item.find('.//{%s}rbridge-id-out' % namespace).text
+            switch_state_reason = item.find('.//{%s}switch-state-reason' % namespace).text
+            for comp in item.findall('.//{%s}component-status' % namespace):
+                component_name = comp.find('.//{%s}component-name' % namespace).text
+                component_state = comp.find('.//{%s}component-state' % namespace).text
                 component = {
                     'component-name': component_name,
                     'component-state': component_state
@@ -66,6 +64,7 @@ class SystemMonitor(object):
                 components.append(component)
             result = {
                 'switch-name': switch_name,
+                'switch-rbridge-id': switch_rbridge_id,
                 'switch-state': switch_state,
                 'switch-state-reason': switch_state_reason,
                 'components': components
