@@ -282,6 +282,28 @@ class Device(object):
         ver = self._callback(request_ver, handler='get')
         return ver.find('.//*{%s}os-version' % namespace).text
 
+    def firmware_version_rbridge_id(self, **kwargs):
+        """
+        Returns firmware version.
+
+        Args:
+            None
+
+        Returns:
+            Dictionary
+
+        Raises:
+            None
+        """
+        namespace = "urn:brocade.com:mgmt:brocade-firmware-ext"
+
+        request_ver = ET.Element("show-firmware-version", xmlns=namespace)
+        rbridge = ET.SubElement(request_ver,
+                                         "switchid")
+        rbridge.text = kwargs.pop('rbridge_id')
+        ver = self._callback(request_ver, handler='get')
+        return ver.find('.//*{%s}os-version' % namespace).text
+
     def _callback_main(self, call, handler='edit_config', target='running',
                        source='startup'):
         """
