@@ -150,10 +150,6 @@ VERSIONS = {
     }
 }
 
-NOS_ATTRS = ['bgp', 'snmp', 'interface', 'lldp', 'system', 'services',
-             'fabric_service', 'vcs', 'firmware', 'ras', 'vcenter', 'hw_vtep', 'nsx', 'system_monitor']
-
-
 class DeviceCommError(Exception):
     """
     Error with device communication.
@@ -222,7 +218,7 @@ class Device(object):
         else:
             ver = '5.0.1'
 
-        for nos_attr in NOS_ATTRS:
+        for nos_attr in VERSIONS[ver]:
             setattr(self, nos_attr, VERSIONS[ver][nos_attr](self._callback))
 
     def __enter__(self):
