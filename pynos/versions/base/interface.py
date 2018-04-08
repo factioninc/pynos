@@ -2765,6 +2765,8 @@ class Interface(object):
                                                       urn).text
                     interface_mac = item.find(
                         '%scurrent-hardware-address' % urn).text
+                    interface_speed = item.find(
+                        '%sactual-line-speed' % urn).text
                     interface_mtu = item.find('%smtu' % urn).text
                     interface_ifhcinoctets = item.find('%sifHCInOctets' % urn).text
                     interface_ifhcinerrors = item.find('%sifHCInErrors' % urn).text
@@ -2781,6 +2783,7 @@ class Interface(object):
                                     'interface-state': interface_state,
                                     'interface-proto-state':
                                         interface_proto_state,
+                                    'interface-speed': interface_speed,
                                     'interface-mac': interface_mac,
                                     'interface-mtu': interface_mtu,
                                     'ifHCInOctets': interface_ifhcinoctets,
