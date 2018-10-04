@@ -147,6 +147,24 @@ VERSIONS = {
         'vcenter': pynos.versions.ver_7.ver_7_1_0.vcenter.Vcenter,
         'system_monitor': pynos.versions.ver_6.ver_6_0_1.system_monitor
             .SystemMonitor,
+    },
+    '7.2.0': {
+        'bgp': pynos.versions.ver_7.ver_7_0_0.bgp.BGP,
+        'snmp': pynos.versions.ver_6.ver_6_0_1.snmp.SNMP,
+        'interface': pynos.versions.ver_7.ver_7_0_0.interface.Interface,
+        'lldp': pynos.versions.ver_7.ver_7_0_0.lldp.LLDP,
+        'system': pynos.versions.ver_7.ver_7_1_0.system.System,
+        'services': pynos.versions.ver_6.ver_6_0_1.services.Services,
+        'fabric_service': pynos.versions.ver_6.ver_6_0_1.fabric_service
+            .FabricService,
+        'vcs': pynos.versions.ver_6.ver_6_0_1.vcs.VCS,
+        'firmware': pynos.versions.ver_7.ver_7_0_0.firmware.Firmware,
+        'ras': pynos.versions.ver_6.ver_6_0_1.ras.RAS,
+        'nsx': pynos.versions.ver_7.ver_7_1_0.nsx.Nsx,
+        'hw_vtep': pynos.versions.ver_7.ver_7_1_0.hw_vtep.hwvtep,
+        'vcenter': pynos.versions.ver_7.ver_7_1_0.vcenter.Vcenter,
+        'system_monitor': pynos.versions.ver_6.ver_6_0_1.system_monitor
+            .SystemMonitor,
     }
 }
 
