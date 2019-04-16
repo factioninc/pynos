@@ -51,6 +51,7 @@ class SystemMonitor(object):
         for item in monitor_results.findall('.//{%s}switch-status' % namespace):
             components = []
             switch_name = item.find('.//{%s}switch-name' % namespace).text
+            switch_ip = item.find('.//{%s}switch-ip' % namespace).text
             switch_state = item.find('.//{%s}switch-state' % namespace).text
             switch_rbridge_id = item.find('.//{%s}rbridge-id-out' % namespace).text
             switch_state_reason = item.find('.//{%s}switch-state-reason' % namespace).text
@@ -64,6 +65,7 @@ class SystemMonitor(object):
                 components.append(component)
             result = {
                 'switch-name': switch_name,
+                'switch-ip': switch_ip,
                 'switch-rbridge-id': switch_rbridge_id,
                 'switch-state': switch_state,
                 'switch-state-reason': switch_state_reason,
