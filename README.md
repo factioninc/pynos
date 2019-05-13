@@ -2,6 +2,12 @@
 pynos is a python library for working with Brocade devices running NOS.
 
 ##Installation
+*NOTE:* To pick up support for 7.2.0 install, having checked this repo out, with:
+```
+sudo python setup.py install
+```
+
+If you don't care about 7.2.0, the following will probably work:
 ```
 pip install pynos
 ```
